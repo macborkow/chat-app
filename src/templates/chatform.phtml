@@ -1,0 +1,32 @@
+<p>Hi <?=$_SESSION['name'];?> !</p>
+
+<!-- 
+change name
+-->
+<form class='pure-form' method='post' action='/logout'>
+    <fieldset>
+        <button type="submit" class="pure-button pure-button-primary">Change name</button>
+    </fieldset>
+</form>
+
+<!-- 
+send message form
+-->
+<form class='pure-form' method='post' action='/send'>
+    <fieldset class='pure-group'>
+        <legend>Write a message:</legend>
+        <input class="pure-input-1-2" name="receiver" type='text' placeholder='Recipient'/>
+        <textarea class="pure-input-1-2" name="message" placeholder="Message"></textarea>
+        <button type="submit" class="pure-button pure-button-primary">Send</button>
+    </fieldset>
+</form>
+
+<!-- 
+show who's online
+-->
+<form class='pure-form' method='get' action='/users'>
+    <fieldset class='pure-group'>
+        <button type="submit" class="pure-button pure-button-primary">Users list</button>
+    </fieldset>
+</form>
+

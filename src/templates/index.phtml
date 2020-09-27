@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>    
+    <title>Chat</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" >
+
+    <!--
+    refresh message list
+    -->
+    <script>
+    function loadlink(){
+        $('#messages').load('/ #messages',function () {
+            $(this).unwrap();
+        });
+    }
+
+    loadlink(); //on page load
+    setInterval(function(){
+        loadlink() //every second
+    }, 1000);
+    </script>
+
+
+</head>
+<body>
+
+
+<!--
+show either name pick form or main chat page 
+-->
+<?php if($_SESSION['name'] == '' ) {
+    require 'nameform.phtml';
+}
+else {
+    require 'chatform.phtml';
+}
+?>
+
+<!--
+show messages || hide them when logged out
+-->
+<div id="messages" <?php if($_SESSION['name']=='') echo 'hidden';?>> 
+    <h1>Here are your messages:</h1>
+
+    <table class="pure-table">
+        <tr>
+            <th>Author</th>
+            <th>Message</th>
+        </tr>
+
+    <?php 
+        $messages = json_decode($messages);
+
+
+        foreach ($messages as $message): ?>
+
+
+        <?php if($message->receiver == $_SESSION['name']) : ?>
+        <tr>
+            <td><?= $message->author; ?></td>
+            <td><?= $message->message; ?></td>
+        </tr>
+        <?php endif; ?>
+
+    <?php endforeach; ?>
+    </table>
+</div>
+
+
+
+
+
+</body>
+</html>

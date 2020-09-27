@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" >
+</head>
+<body>
+
+<h1>Users list:</h1>
+
+<table class="pure-table">
+    <tr>
+        <th>Name</th>
+        <th>Online?</th>
+    </tr>
+
+<?php 
+    $users = json_decode($users);
+
+    foreach ($users as $user): ?>
+
+    <tr>
+        <td><?= $user->name; ?></td>
+        <td><?php if($user->online==1) echo '&#10003;'; ?></td>
+    </tr>
+
+<?php endforeach; ?>
+</table>
+
+<form class='pure-form' method='get' action='/'>
+    <fieldset class='pure-group'>
+        <button type="submit" class="pure-button pure-button-primary">Go back</button>
+    </fieldset>
+</form>
