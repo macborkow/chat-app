@@ -1,6 +1,6 @@
 # chat app
 
-Chat app for bunq assignment.
+Chat app.
 
 ## Installation
 
