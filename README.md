@@ -1,6 +1,6 @@
 # chat app
 
-Chat app. Made using Slim Framework and Pure CSS.
+Chat app. Made using `Slim Framework` and `Pure.CSS`.
 
 ## Installation
 
